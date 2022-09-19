@@ -17,14 +17,16 @@ app.engine(
 );
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('combined'));
+console.log(__dirname);
 
 const port = process.env.PORT || 3000;
 
-app.use('/', (req, res) =>{
+app.get('/', (req, res) =>{
     res.render('home');
 });
+
 
 app.listen(port, (req, res)=>{
     console.log(` Server is running at port ${port}`);
