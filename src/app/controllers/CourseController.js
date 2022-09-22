@@ -2,7 +2,7 @@ const Course = require('../models/Course');
 const { singleMongooseToObject} = require('../../util/mongoosehelp');
 class CourseController {
     //[GET] courses/show
-    show(req, res,next) {
+    show(req, res, next) {
         //res.send('DETAL PAGE' + req.params.slug);
 
         Course.findOne({slug: req.params.slug})
@@ -11,7 +11,7 @@ class CourseController {
 
     }
     //[GET] courses/create
-    create(req, res, next){
+    create(req, res){
         res.send('Create Course');
     }
 }
