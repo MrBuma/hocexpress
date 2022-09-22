@@ -5,9 +5,11 @@ require('dotenv').config();
 const morgan = require('morgan');
 const route = require('./routers');
 const app = express();
-app.use(express.urlencoded({
-    extended: true
-}));
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
 app.use(express.json());
 //template Engine
 app.engine(
@@ -23,9 +25,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('combined'));
-
 const port = process.env.PORT || 3000;
-
 
 route(app);
 // app.get('/', (req, res) =>{
@@ -38,6 +38,6 @@ route(app);
 //     res.render('search');
 // });
 
-app.listen(port, (req, res)=>{
+app.listen(port, (req, res) => {
     console.log(` Server is running at port ${port}`);
-})
+});
