@@ -3,17 +3,23 @@ const { singleMongooseToObject} = require('../../util/mongoosehelp');
 class CourseController {
     //[GET] courses/show
     show(req, res, next) {
-        //res.send('DETAL PAGE' + req.params.slug);
+        // res.send('DETAL PAGE' + req.params.slug);
 
         Course.findOne({slug: req.params.slug})
             .then(course => res.render('courses/show', {course: singleMongooseToObject(course)}))
-            .catch(next)
-
-    }
+    }   
     //[GET] courses/create
     create(req, res){
-        res.send('Create Course');
+        res.render('courses/create')
     }
+    //[POST] courses/stored
+    store(req, res, next){
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${req.body.videoid}/default.jpg`;
+        const course = new Course(formData);
+        course.save()
+        .then(()=> res.redirect('/courses'));
+    };
 }
 
 module.exports = new CourseController();
