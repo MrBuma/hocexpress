@@ -24,6 +24,19 @@ class CourseController {
         .catch(next)
       
     };
+    //[GET]me/courses/id/edit
+    edit(req, res, next){
+        // console.log(req.params.id);
+        Course.findById({_id: req.params.id})
+            .then(course => res.render('courses/updatecourse', {course: singleMongooseToObject(course)}))
+            .catch(next)
+    }
+      //[PUT]/courses/id
+    update(req, res, next){
+        Course.updateOne({_id: req.params.id}, req.body)
+            .then(()=> res.redirect('me/stored/coures'))
+            .catch(next)
+    }
   
 }
 

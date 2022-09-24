@@ -1,11 +1,13 @@
 const Course = require('../models/Course');
-const { MultiMongooseToObject} = require('../../util/mongoosehelp');
+const { multiMongooseToObject} = require('../../util/mongoosehelp');
 class MeController {
   
     //[get] me/stored/courses
     storedCourses(req, res, next){
-       
-       res.send('Hello')
+        Course.find({})
+            .then(courses => res.render('me/storedcourses', {courses: multiMongooseToObject(courses)}))
+            .catch(next)
+      
     };
 }
 
