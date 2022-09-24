@@ -1,11 +1,11 @@
 const Course = require('../models/Course');
-const { singleMongooseToObject} = require('../../util/mongoosehelp');
+const { MultiMongooseToObject} = require('../../util/mongoosehelp');
 class MeController {
   
     //[get] me/stored/courses
-    show(req, res, next){
+    storedCourses(req, res, next){
        
-       res.gender('meStoredCourses')
+       res.send('Hello')
     };
 }
 
