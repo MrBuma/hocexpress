@@ -44,14 +44,14 @@
        Bạn có chắc xóa khóa học này không ?
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn-delete-course" class="btn btn-primary">Xóa bỏ</button>
+        <button type="button" id="btn-delete-course" class="btn btn-danger">Xóa bỏ</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
       </div>
     </div>
   </div>
 </div>
 {{!-- Form hidden delete --}}
-  <form action="" method="post" name="form-course-delete"></form>
+  <form  method="POST" action="" name="form-course-delete"></form>
 <script>
      document.addEventListener('DOMContentLoaded', function(){
       // khi dialog confirm show
@@ -62,7 +62,6 @@
               var button = $(event.relatedTarget); 
               courseId= button.data('id');
            })
-
          btnDeleteCourse.onclick = function(){
              formDeleteCourse.action ='/courses/' + courseId + '?_method=DELETE';
              formDeleteCourse.submit();
